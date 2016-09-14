@@ -72,7 +72,7 @@ asynStatus URLDriver::readImage()
     int depth;
     const char *map;
     static const char *functionName = "readImage";
-    
+
     getStringParam(URLName, sizeof(URLString), URLString);
     if (strlen(URLString) == 0) return(asynError);
     try {
@@ -99,8 +99,8 @@ asynStatus URLDriver::readImage()
             colorMode = NDColorModeRGB1;
             break;
         default:
-            asynPrint(pasynUserSelf, ASYN_TRACE_ERROR, 
-                "%s:%s: unknown ImageType=%d\n", 
+            asynPrint(pasynUserSelf, ASYN_TRACE_ERROR,
+                "%s:%s: unknown ImageType=%d\n",
                 driverName, functionName, imageType);
             return(asynError);
             break;
@@ -120,8 +120,8 @@ asynStatus URLDriver::readImage()
             storageType = IntegerPixel;
             break;
         default:
-            asynPrint(pasynUserSelf, ASYN_TRACE_ERROR, 
-                "%s:%s: unsupported depth=%d\n", 
+            asynPrint(pasynUserSelf, ASYN_TRACE_ERROR,
+                "%s:%s: unsupported depth=%d\n",
                 driverName, functionName, depth);
             return(asynError);
             break;
@@ -131,7 +131,7 @@ asynStatus URLDriver::readImage()
         pImage = this->pArrays[0];
         asynPrint(this->pasynUserSelf, ASYN_TRACEIO_DRIVER,
             "%s:%s: reading URL=%s, dimensions=[%lu,%lu,%lu], ImageType=%d, depth=%d\n",
-            driverName, functionName, URLString, 
+            driverName, functionName, URLString,
             (unsigned long)dims[0], (unsigned long)dims[1], (unsigned long)dims[2], imageType, depth);
         image.write(0, 0, ncols, nrows, map, storageType, pImage->pData);
         pImage->pAttributeList->add("ColorMode", "Color mode", NDAttrInt32, &colorMode);
@@ -146,12 +146,12 @@ asynStatus URLDriver::readImage()
     }
     catch(std::exception &error)
     {
-        asynPrint(this->pasynUserSelf, ASYN_TRACE_ERROR, 
-            "%s:%s: error reading URL=%s\n", 
+        asynPrint(this->pasynUserSelf, ASYN_TRACE_ERROR,
+            "%s:%s: error reading URL=%s\n",
             driverName, functionName, error.what());
         return(asynError);
     }
-         
+
     return(asynSuccess);
 }
 
@@ -289,7 +289,7 @@ void URLDriver::URLTask()
     }
 }
 
-
+
 /** Called when asyn clients call pasynInt32->write().
   * This function performs actions for some parameters, including ADAcquire, ADColorMode, etc.
   * For all parameters it sets the value in the parameter library and calls any registered callbacks..
@@ -338,7 +338,7 @@ asynStatus URLDriver::writeInt32(asynUser *pasynUser, epicsInt32 value)
 
 
 
-
+
 /** Report status of the driver.
   * Prints details about the driver if details>0.
   * It then calls the ADDriver::report() method.
@@ -372,7 +372,7 @@ void URLDriver::report(FILE *fp, int details)
   * \param[in] priority The thread priority for the asyn port driver thread if ASYN_CANBLOCK is set in asynFlags.
   * \param[in] stackSize The stack size for the asyn port driver thread if ASYN_CANBLOCK is set in asynFlags.
   */
-URLDriver::URLDriver(const char *portName, int maxBuffers, size_t maxMemory, 
+URLDriver::URLDriver(const char *portName, int maxBuffers, size_t maxMemory,
                      int priority, int stackSize)
 
     : ADDriver(portName, 1, NUM_URL_DRIVER_PARAMS, maxBuffers, maxMemory,
@@ -427,7 +427,7 @@ URLDriver::URLDriver(const char *portName, int maxBuffers, size_t maxMemory,
 }
 
 /** Configuration command, called directly or from iocsh */
-extern "C" int URLDriverConfig(const char *portName, int maxBuffers, size_t maxMemory, 
+extern "C" int URLDriverConfig(const char *portName, int maxBuffers, size_t maxMemory,
                                int priority, int stackSize)
 {
     new URLDriver(portName, maxBuffers, maxMemory, priority, stackSize);

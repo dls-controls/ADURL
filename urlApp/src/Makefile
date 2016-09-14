@@ -15,11 +15,24 @@ ifeq ($(USE_GRAPHICSMAGICK), YES)
   LIBRARY_IOC_WIN32 = URLDriver
   LIBRARY_IOC_cygwin32 = URLDriver
   LIBRARY_IOC_Darwin = URLDriver
-  LIB_SRCS += URLDriver.cpp
 
   DBD += URLDriverSupport.dbd
 
-  include $(ADCORE)/ADApp/commonLibraryMakefile
+  LIB_SRCS += URLDriver.cpp
+
+  URLDriver_INCLUDES += -I$(MAGICK_PREFIX)/include/GraphicsMagick
+
+  GRAPHICS_MAGICK_LIBS = $(MAGICK_PREFIX)/lib
+
+  GraphicsMagick_DIR = $(GRAPHICS_MAGICK_LIBS)
+  GraphicsMagick++_DIR = $(GRAPHICS_MAGICK_LIBS)
+  GraphicsMagickWand_DIR = $(GRAPHICS_MAGICK_LIBS)
+
+  URLDriver_LIBS += GraphicsMagick
+  URLDriver_LIBS += GraphicsMagick++
+  URLDriver_LIBS += GraphicsMagickWand
+
+  #include $(ADCORE)/ADApp/commonLibraryMakefile
 endif
 
 #=============================

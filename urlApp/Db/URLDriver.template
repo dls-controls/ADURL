@@ -1,6 +1,18 @@
 # Database for the records specific to the URL driver
 # Mark Rivers
 # October 12, 2010
+#
+# Imported to DLS from github 8 September 2016
+
+
+# % macro, P, Device Prefix
+# % macro, R, Device Suffix
+# % macro, PORT, Asyn Port name
+# % macro, ADDR, Asyn Port address
+# % macro, TIMEOUT, Timeout
+
+# All tags starting with gdatag are DLS specific for GDA
+# % gdatag, template, URLDriver, $(PORT)_URLDriver, $(PORT) URLDriver class instance
 
 include "ADBase.template"
 
