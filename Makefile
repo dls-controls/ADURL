@@ -3,6 +3,7 @@ TOP = .
 include $(TOP)/configure/CONFIG
 DIRS := $(DIRS) configure
 DIRS := $(DIRS) urlApp
+DIRS := $(DIRS) etc
 ifeq ($(BUILD_IOCS), YES)
 DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard iocs))
 iocs_DEPEND_DIRS += urlApp
