@@ -1,10 +1,12 @@
-#RELEASE Location of external products
-# Run "gnumake clean uninstall install" in the application
-# top directory each time this file is changed.
+# Common prefixes
+TEMPLATE_TOP  = $(EPICS_BASE)/templates/makeBaseApp/top
+SUPPORT       = /dls_sw/prod/R3.14.12.3/support
+TOOLS_BASE    = /dls_sw/prod/tools/RHEL6-x86_64
 
--include $(TOP)/../configure/RELEASE_PATHS.local
--include $(TOP)/../configure/RELEASE_PATHS.local.$(EPICS_HOST_ARCH)
--include $(TOP)/../configure/RELEASE_LIBS.local
--include $(TOP)/RELEASE.local
--include $(TOP)/configure/RELEASE.local
+# Module definitions
+ASYN          = $(SUPPORT)/asyn/4-26
+ADCORE        = $(SUPPORT)/ADCore/2-4dls2
+MAGICK_PREFIX = $(TOOLS_BASE)/GraphicsMagick/1-3-22/prefix
 
+# EPICS Base appears last
+EPICS_BASE    = /dls_sw/epics/R3.14.12.3/base
