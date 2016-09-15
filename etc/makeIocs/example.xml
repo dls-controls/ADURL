@@ -1,4 +1,5 @@
 <?xml version="1.0" ?>
 <components arch="linux-x86_64">
-	<ADURL.URLDriver ADDR="0" NDARRAY_ADDR="0" NDARRAY_PORT="example.sim" P="example" PORT="example.url" R=":URL" TIMEOUT="0"/>
+	<EPICS_BASE.EpicsEnvSet key="EPICS_CA_MAX_ARRAY_BYTES" value="4000000"/>
+	<ADURL.URLDriver ADDR="0" BUFFERS="50" MEMORY="0" P="example" PORT="example.url" R=":URL:" TIMEOUT="1"/>
 </components>

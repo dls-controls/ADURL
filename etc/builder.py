@@ -4,7 +4,7 @@ from iocbuilder import Device, AutoSubstitution
 from iocbuilder.arginfo import *
 
 from iocbuilder.modules.asyn import Asyn, AsynPort
-from iocbuilder.modules.ADCore import ADCore, NDPluginBaseTemplate, includesTemplates, makeTemplateInstance
+from iocbuilder.modules.ADCore import ADCore, ADBaseTemplate, includesTemplates, makeTemplateInstance
 
 class ADURL(Device):
     '''Library dependencies for ADURL'''
@@ -14,7 +14,7 @@ class ADURL(Device):
     DbdFileList = ['URLDriverSupport']
     AutoInstantiate = True
 
-@includesTemplates(NDPluginBaseTemplate)
+@includesTemplates(ADBaseTemplate)
 class _URLDriver(AutoSubstitution):
     '''Plugin template wrapper'''
     TemplateFile = "URLDriver.template"
