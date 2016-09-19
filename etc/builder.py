@@ -16,7 +16,7 @@ class ADURL(Device):
 
 @includesTemplates(ADBaseTemplate)
 class _URLDriver(AutoSubstitution):
-    '''Plugin template wrapper'''
+    '''areaDetector base template wrapper'''
     TemplateFile = "URLDriver.template"
 
 class URLDriver(AsynPort):
@@ -27,7 +27,7 @@ class URLDriver(AsynPort):
     _SpecificTemplate = _URLDriver
     Dependencies = (ADURL,)
 
-    def __init__(self, PORT, BUFFERS = 50, MEMORY = 0, **args):
+    def __init__(self, PORT, BUFFERS = 10, MEMORY = 0, **args):
         # Init the superclass (AsynPort)
         self.__super.__init__(PORT)
         # Update the attributes of self from the commandline args

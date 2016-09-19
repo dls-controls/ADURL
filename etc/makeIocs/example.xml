@@ -2,4 +2,5 @@
 <components arch="linux-x86_64">
 	<EPICS_BASE.EpicsEnvSet key="EPICS_CA_MAX_ARRAY_BYTES" value="4000000"/>
 	<ADURL.URLDriver ADDR="0" BUFFERS="50" MEMORY="0" P="example" PORT="example.url" R=":URL:" TIMEOUT="1"/>
+	<ADCore.NDFileTIFF ADDR="0" ENABLED="1" NDARRAY_PORT="example.url" P="example" PORT="example.tiff" R=":TIFF:" TIMEOUT="1"/>
 </components>
